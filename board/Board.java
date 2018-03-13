@@ -6,7 +6,7 @@ public class Board
 	Snake snake = new Snake();
 	Ladder ladder = new Ladder();
 	
-	public void gameStarts()
+	public void gameStarts() 
 	{
 		for(int i=numbers.length;i>=1;i--)
 		{
