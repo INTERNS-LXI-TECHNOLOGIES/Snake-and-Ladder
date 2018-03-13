@@ -5,7 +5,7 @@ public class TDD
 public static void main(String args[])
 {
 SnakeAndLadder object = new SnakeAndLadder();
-object.gameImplementation();
+object.game();
 
 }
 }

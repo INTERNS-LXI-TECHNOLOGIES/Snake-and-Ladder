@@ -6,7 +6,7 @@ private int tailOfSnake;
 
 public void setHeadOfSnake(int headOfSnake)
 {
-	headOfSnake = headOfSnake;
+	this.headOfSnake = headOfSnake;
 }
 public int getHeadOfSnake()
 {
@@ -14,7 +14,7 @@ public int getHeadOfSnake()
 }
 public void setTailOfSnake(int tailOfSnake)
 {
-	tailOfSnake = tailOfSnake;
+	this.tailOfSnake = tailOfSnake;
 }
 public int getTailOfSnake()
 {
@@ -23,8 +23,10 @@ public int getTailOfSnake()
 
 public void setSnakeDetails()
 {
-	setHeadOfSnake((int) (Math.random()*100)+10);
-	setTailOfSnake((int) (Math.random()*90)+2);
+	setHeadOfSnake((int) (Math.random()*79)+9);
+	do{
+	setTailOfSnake((int) (Math.random()*58)+2);
+	}while(this.headOfSnake<this.tailOfSnake);
 }
 
 
