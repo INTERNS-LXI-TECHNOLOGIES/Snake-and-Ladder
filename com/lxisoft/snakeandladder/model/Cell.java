@@ -16,7 +16,7 @@ public class Cell{
 	public void setSnakeOrLadder(snakeOrLadder){
 		this.snakeOrLadder=snakeOrLadder;
 	}
-
+ 
 /* 	public boolean hasSnakeOrLadder(){
 		
 	} */

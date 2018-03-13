@@ -1,8 +1,8 @@
 public class Board{
 	
 	private List<Cell> cellList;
-/* 	private List<Snake> snakeList;
-	private List<Ladder> ladderList; */
+   	private List<Snake> snakeList;
+	private List<Ladder> ladderList; 
 	
 	//Getters and Setters
 	public List<Cell> getCellList(){
@@ -11,7 +11,7 @@ public class Board{
 	public void setCellList(List<Cell> cellList){
 		this.cellList=cellList;
 	}
-/* 	public List<Snake> getSnakeList(){
+ 	public List<Snake> getSnakeList(){
 		return snakeList;
 	}
 	public void setSnakeList(List<Snake> snakeList){
@@ -22,6 +22,6 @@ public class Board{
 	}
 	public void setLadderList(List<Ladder> ladderList){
 		this.ladderList=ladderList;
-	}  */
+	} 
 	
 }

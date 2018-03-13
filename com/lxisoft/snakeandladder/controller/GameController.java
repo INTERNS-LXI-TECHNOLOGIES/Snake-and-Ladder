@@ -1,22 +1,33 @@
 public class GameController(){ //make changes in sync with Game class
 	
 	private Board board;
-	List<Cell> snakeList;
+	List<Cell> cellList;
 	List<Ladder> ladderList;
+	private List<Snake> snakeList;
 	
 	//Create Snakes
 	public void createSnakes(){
-		Snake snake1 = new Snake("S1",17,7);
+/* 		Snake snake1 = new Snake("S1",17,7);
 		Snake snake2 = new Snake("S2",54,34);
 		Snake snake3 = new Snake("S3",62,19);
 		Snake snake4 = new Snake("S4",64,60);
-		Snake snake5 = new Snake("S5",87,24);
+		Snake snake5 = new Snake("S5",87,24); */
+		
+		for(int i=100;1<=6;i++){
+			Snake snake = new Snake();
+			
+			
+		}
+		
 
 	}
 	
 	//Create Ladders
 	public void createLadders(){
+		Ladder ladder = new Ladder();
+		Ladder ladder = new Ladder();
 		
+
 	}
 	
 	//Create Cells
