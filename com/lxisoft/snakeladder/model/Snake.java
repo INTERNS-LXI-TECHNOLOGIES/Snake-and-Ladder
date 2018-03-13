@@ -1,7 +1,7 @@
 public class Snake
 {
-	int dropStartPosition;
-	int dropEndPosition;
+	private int dropStartPosition;
+	private int dropEndPosition;
 	
 	public void setDropStartPosition(int dropStart)
 	{

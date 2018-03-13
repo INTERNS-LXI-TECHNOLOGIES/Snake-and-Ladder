@@ -1,6 +1,6 @@
 public class Board
 {
-	int cell[][]=new int[10][10];
+	ArrayList<Cell> cell=new ArrayList<Cell>();
 	ArrayList<Snake> snake=new ArrayList<Snake>();
 	ArrayList<Ladder> ladder=new ArrayList<Ladder>();
 	

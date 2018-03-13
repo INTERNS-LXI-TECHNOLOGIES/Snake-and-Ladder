@@ -2,7 +2,7 @@ public class TDD
 {
 	public static void main(String[] args)
 	{
-		BoardController boardController=new BoardController();
-		boardController.createBoard();
+		GameController gameController=new GameController();
+		gameController.createGame();
 	}
 }
