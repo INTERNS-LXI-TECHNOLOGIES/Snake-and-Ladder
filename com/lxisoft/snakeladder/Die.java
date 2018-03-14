@@ -1,3 +1,4 @@
+import java.util.*;
 public class Die
 {
 	private double randomNumber;
@@ -8,6 +9,6 @@ public class Die
 	}
 	public double getRandomNumber()
 	{
-		this.randomNumber;
+		return this.randomNumber;
 	}
 }

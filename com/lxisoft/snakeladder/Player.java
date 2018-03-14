@@ -1,3 +1,4 @@
+import java.util.*;
 public class Player
 {
 	private int currentPosition=0;
@@ -8,7 +9,7 @@ public class Player
 	}
 	public  int getCurrentPosition()
 	{
-		this.currentPosition;
+		return this.currentPosition;
 	}
 	
 }

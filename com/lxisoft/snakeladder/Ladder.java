@@ -1,3 +1,4 @@
+import java.util.*;
 public class Ladder
 {
 	private int climbStartPosition;
@@ -14,7 +15,7 @@ public class Ladder
 	
 	public void setClimbEndPosition(int climbEnd)
 	{
-		this.climbEndPosition=dclimbEnd;
+		this.climbEndPosition=climbEnd;
 	}
 	public int getClimbEndPosition()
 	{

@@ -1,3 +1,4 @@
+import java.util.*;
 public class Cell
 {
 	private int cellNumber;
@@ -7,6 +8,6 @@ public class Cell
 	}
 	public int getCellNumber()
 	{
-		this.cellNumber;
+		return this.cellNumber;
 	}
 }

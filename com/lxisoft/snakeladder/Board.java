@@ -1,14 +1,15 @@
+import java.util.*;
 public class Board
 {
-	ArrayList<Cell> cell=new ArrayList<Cell>();
-	ArrayList<Snake> snake=new ArrayList<Snake>();
-	ArrayList<Ladder> ladder=new ArrayList<Ladder>();
+	private ArrayList<Cell> cell=new ArrayList<Cell>();
+	private ArrayList<Snake> snake=new ArrayList<Snake>();
+	private ArrayList<Ladder> ladder=new ArrayList<Ladder>();
 	
-	public void setCell(int cells[][])
+	public void setCell(ArrayList<Cell> cells)
 	{
 		this.cell=cells;
 	}
-	public int[][] getCell()
+	public ArrayList<Cell> getCell()
 	{
 		return this.cell;
 	}
