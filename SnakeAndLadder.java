@@ -1,10 +1,58 @@
 package com.lxisoft.snakeandladder;
+import java.util.*;
 public class SnakeAndLadder
 {
    Board board = new Board();
+   Player[] players = new Player[3];
+   Scanner scan = new Scanner(System.in);
+   int playerId=0;
+   int choice;
+   
 	public void game()
 	{
-	  board.gameImplementation();
+		int diceValue
+		do
+		{
+			board.gameImplementation();
+			System.out.println("Player "+(playerId+1)+"'s Chance :");
+			System.out.println("Enter 1 to throw Dice :");
+			choice = scan.nextInt();
+			if(choice != 1)
+			{
+					break;
+			}
+			diceValue=(int) (Math.random()*6)+1;
+			updatePosition(diceValue,playerId);
+			
+			
+		}while(checkWin(players));	  
+	  
+	}
+	public void updatePosition(int diceValue,int playerId)
+	{
+	   if(diceValue==1&&player[playerId].position ==0)
+	   {
+		   System.out.print("Player"+playerId+" is entered into game...");
+		   players[playerId].position = 1;
+	   }
+	   else if(players[playerId].position+diceValue<=100)
+	   {
+		   players[playerId].position +=diceValue ;
+		   System.out.print("current position of player"+playerId+players[playerId]);
+	   }
+	
+	}
+	
+	public boolean checkWin(Player[] players)
+	{
+		for(int i = 0;i<players.length();i++)
+		{
+			if(players[i].position==100)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }
  
