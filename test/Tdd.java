@@ -5,6 +5,6 @@ public class Tdd
 public static void main(String args[])
 {
 	SnakeNLadder s=new SnakeNLadder();
-	s.StartGame();
+	s.startGame();
 }
 }
