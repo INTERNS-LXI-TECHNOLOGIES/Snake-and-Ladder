@@ -22,7 +22,7 @@ public void startGame()
 			System.out.print("  ");		
 		for(int x=9*9;x>0;x--)
 		{
-			System.out.print("_");		
+			 System.out.print("_");		
 		}
 		System.out.println("");		
 	
