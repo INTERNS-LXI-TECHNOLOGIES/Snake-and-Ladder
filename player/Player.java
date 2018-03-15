@@ -29,16 +29,19 @@ public void inputPlayersDetails()
 		}
 		if(isWin(player1))
 		{
+			
 			System.out.println("First Player wins");
 			return;
 		}
 		
 	}
 	else{
+		
 		player2=playerValue(player2,diceValue);
 		System.out.println("First Player:"+player);
 		System.out.println("Second Player:"+player2);
 		System.out.println("***********************");
+		
 		}
 		if(isWin(player2))
 		{
