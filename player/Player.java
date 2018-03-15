@@ -1,6 +1,7 @@
+package com.lxisoft.snakeandladder.player;
 import com.lxisoft.player;
 import java.util.Scanner;
-public class Players
+public class Player
 {
 	Scanner scan=new Scanner(System.in);
 	
@@ -11,7 +12,7 @@ public void inputPlayersDetails()
 	int diceValue=0;
 	Scanner scan=new Scanner(System.in);
 	String str;
-	int diceValue=0;
+	
 	
 	do
 	{
@@ -37,6 +38,7 @@ public void inputPlayersDetails()
 	}
 	else{
 		
+
 		player2=playerValue(player2,diceValue);
 		System.out.println("First Player:"+player);
 		System.out.println("Second Player:"+player2);
