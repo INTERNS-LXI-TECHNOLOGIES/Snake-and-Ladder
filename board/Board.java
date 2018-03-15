@@ -1,12 +1,12 @@
 package com.lxi.snakeandladder.board;
 public class Board
 {
-   int[][] box= new int[10][10];
+   int[][] cell= new int[10][10];
    //Snake snake;
    //Ladder ladder;
   
   
-  public void createBoxes()
+  public void getBoard()
   {
 	 
    for(int i=9;i>=0;i--)
@@ -16,8 +16,8 @@ public class Board
 		 for(int j=9;j>=0;j--)
 		  {
 			int k=(10*i)+j+1;
-			box[i][j]=k;
-			System.out.print("["+box[i][j]+"]"+" ");
+			cell[i][j]=k;
+			System.out.print("["+cell[i][j]+"]"+" ");
 			
 		  }
 		  System.out.print("                                     ");
@@ -28,16 +28,16 @@ public class Board
 			for(int j=0;j<=9;j++)
 			{
 				int k=(10*i)+j+1;
-				box[i][j]=k;
+				cell[i][j]=k;
 				if(i==0&&j<9)
 				{
-					System.out.print("["+i+box[i][j]+"]"+" ");
+					System.out.print("["+i+cell[i][j]+"]"+" ");
 
 				}
 				
 				else
 				{
-					System.out.print("["+box[i][j]+"]"+" ");
+					System.out.print("["+cell[i][j]+"]"+" ");
 			    }
 			}
                  		  System.out.print("                                     ");
