@@ -13,16 +13,18 @@ scanner scan = new Scanner(System.in);
 
 public void playGame()
 {
-  	 board.getBoard();
- 
+  	board.getBoard();
+	System.out.print("Player1 chance");
     System.out.print("Enter 1 to throw the dice: \n ");
     diceThrow = scan.nextInt();
     rotateDice=((Math.random()*6)+1);
 
-   if(rotateDice==1)
-   {
+    if(rotateDice==1)
+     {
 	   System.out.print("Entered into the game:");
-   }
+	   
+     }
+	 
    
    
 }

@@ -4,6 +4,8 @@ public class Player
 {
 int number;
 int cellNo;
+ 
+ 
 
 
 
