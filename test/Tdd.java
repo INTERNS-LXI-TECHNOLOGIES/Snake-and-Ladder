@@ -6,6 +6,6 @@ public class Tdd
 	{
 		Board board = new Board();
 		
-		board.gameBoard();
+		board.inputNumbers();
 	}
 }

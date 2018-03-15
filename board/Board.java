@@ -1,46 +1,51 @@
 package com.lxisoft.snakeandladder.board;
+import com.lxisoft.snakeandladder.board.Snake;
+import com.lxisoft.snakeandladder.board.Ladder;
+import com.lxisoft.snakeandladder.player.Player;
 public class Board
 {
-	int[][] cell = new int[10][10];
+	int[] numbers = new int[100];
+	int value=numbers.length; 
 	Snake snake = new Snake();
 	Ladder ladder = new Ladder();
-	
-	public void gameBoard() 
+	Player players = new Player();
+	public void inputNumbers()
 	{
-		for(int i=9;i>=0;i--)
+		do
 		{
-			System.out.print("a");
-			if(i%2==1)
-			{
-				for(int j=9;j>=0;j--)
+			System.out.println(" -----------------------------------------------------------");
+			System.out.print("|");
+			for(int i=value;i>=(value-9);i--)
+			{ 
+				if(i==100)
 				{
-					int k=(10*i)+j+1;
-					cell[i][j]=k;
-					System.out.print("["+cell[i][j]+"]");
+					System.out.print(" "+i+" |");
+				}
+				else if(i>=10)
+				{
+					System.out.print("  "+i+" |");	
 				}
 			}
-			else if(i%2==0)
+			value =(value-19);
+			System.out.print("\n");
+			System.out.println(" -----------------------------------------------------------");
+			System.out.print("|");
+			for(int j=value;j<=(value+9);j++)
 			{
-				for(int j=0;j<=9;j++)
+				if(j>=10)
 				{
-					int k=(10*i)+j+1;
-					cell[i][j]=k;
-					if(i==0&&j<9)
-					{
-						System.out.print("["+i+cell[i][j]+"]");
-					}	
-					else
-					{
-					  System.out.print("["+cell[i][j]+"]");
-					}
+					System.out.print("  "+j+" |");
 				}
+				else if(j<10)
+				{
+					System.out.print("  "+j+"  |");
+				}		
 			}
-			else
-			{
-			    System.out.print("  ");
-			} 
-		System.out.print("\n");
-		}			
-
+			value=(value-1);
+			System.out.print("\n");
+		}while(value>=1);
+		System.out.println(" -----------------------------------------------------------");
+		players.inputPlayers();
+		//players.die();
 	}
 }
