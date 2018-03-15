@@ -8,7 +8,10 @@ public class Test{
 		gameController.createLadders();
 		gameController.createCells();
 		gameController.createBoard();
+		gameController.createPieces();
 		gameController.createPlayers();
+		gameController.createDice();
+		gameController.createGame();
 		gameController.displayBoard();
 		gameController.play(); 
 		

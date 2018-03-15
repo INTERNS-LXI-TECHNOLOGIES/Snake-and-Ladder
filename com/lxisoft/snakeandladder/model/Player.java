@@ -2,6 +2,10 @@ public class Player{
 	
 	private Piece piece;
 	
+	public Player(Piece piece){
+		this.piece=piece;
+	}
+	
 	//Getters and Setters
 	public int getPiece(){
 		return piece;
@@ -9,8 +13,8 @@ public class Player{
 	public void setPiece(Piece piece){
 		this.piece=piece;
 	}
-
-
-	public void generateRandomNumber(){}
 	
+	public int throw(Dice dice){
+		int number = dice.generateRandomNumber();
+	}
 }

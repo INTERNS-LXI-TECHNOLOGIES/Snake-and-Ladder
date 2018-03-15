@@ -1,7 +1,10 @@
 public class Piece{
 	
-	private char name;
 	private int position;
+	
+	public Piece(int position){
+		this.position=position;
+	}
 	
 	//Getters and Setters
 	public int getPosition(){
@@ -12,8 +15,9 @@ public class Piece{
 	}
 
 
-	public void move(){
-		System.out.print(name);
+	public int move(int number){ //code later
+		this.position=position+number;
+		return position;
 	}
 	
 }

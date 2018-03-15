@@ -1,3 +1,4 @@
+import java.util.concurrent.ThreadLocalRandom;
 public class Dice{
 	
 	private int number;
@@ -10,7 +11,9 @@ public class Dice{
 		this.number=number;
 	}
 
-
-	public void generateRandomNumber(){}
+	public int generateRandomNumber(){ 
+		number = ThreadLocalRandom.current().nextInt(1,7);
+		return number;
+	}
 	
 }

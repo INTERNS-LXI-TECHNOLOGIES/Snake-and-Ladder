@@ -1,7 +1,8 @@
 public class Cell{
 	
 	private int number;
-	private SnakeOrLadder snakeOrLadder;
+	private boolean hasSnake;
+	private boolean hasLadder;
 	
 	//Getters and Setters
 	public int getNumber(){
@@ -10,11 +11,17 @@ public class Cell{
 	public void setNumber(int number){
 		this.number=number;
 	}
-	public int getSnakeOrLadder(){
-		return snakeOrLadder;
+	public boolean getHasSnake(){
+		return hasSnake;
 	}
-	public void setSnakeOrLadder(snakeOrLadder){
-		this.snakeOrLadder=snakeOrLadder;
+	public void setHasSnake(boolean hasSnake){
+		this.hasSnake=hasSnake;
+	}
+	public boolean getHasLadder(){
+		return hasLadder;
+	}
+	public void setHasLadder(boolean hasLadder){
+		this.hasLadder=hasLadder;
 	}
  
 /* 	public boolean hasSnakeOrLadder(){
