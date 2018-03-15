@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 public class BoardController
 {
 	private ArrayList<Cell> cell=new ArrayList<Cell>();
@@ -19,10 +20,18 @@ public class BoardController
 	}
 	public void displayBoard()
 	{
-		cell=board.getCell();
-		for(Cell i:cell)
+		ArrayList<Cell> cells=new ArrayList<Cell>();
+		cells=board.getCell();
+		int index=99;
+		for(int j=0;j<10;j++)
 		{
-			System.out.println(" "+i.getCellNumber());
+			for(int i=0;i<10;i++)
+			{
+				System.out.print("  |  "+cells.get(index).getCellNumber());
+				index--;
+			}
+			System.out.println("\n");
 		}
+		
 	}
 }

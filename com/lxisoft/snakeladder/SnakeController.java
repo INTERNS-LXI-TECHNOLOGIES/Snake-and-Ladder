@@ -1,7 +1,7 @@
 import java.util.*;
 public class SnakeController
 {
-	private AraayList<Snake> snake=new ArrayList<Snake>();
+	private ArrayList<Snake> snake=new ArrayList<Snake>();
 	public void createSnake(Board bd)throws Exception
 	{
 		for(int i=0;i<7;i++)

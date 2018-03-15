@@ -5,5 +5,6 @@ public class GameController
 	{
 		BoardController boardController=new BoardController();
 		boardController.createBoard();
+		boardController.displayBoard();
 	}
 }
