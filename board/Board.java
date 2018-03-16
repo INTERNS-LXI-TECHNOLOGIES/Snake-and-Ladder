@@ -1,4 +1,5 @@
 package com.lxisoft.snakeandladder.board;
+import java.util.ArrayList;
 import com.lxisoft.snakeandladder.board.Snake;
 import com.lxisoft.snakeandladder.board.Ladder;
 import com.lxisoft.snakeandladder.player.Player;
@@ -8,9 +9,11 @@ public class Board
 	int value=numbers.length; 
 	Snake snake = new Snake();
 	Ladder ladder = new Ladder();
-	Player players = new Player();
-	public void inputNumbers()
+	ArrayList <Player> players = new ArrayList<>();
+	//Player players = new Player();
+	public void inputBoard()
 	{
+		players = new Players();
 		do
 		{
 			System.out.println(" -----------------------------------------------------------");
@@ -41,7 +44,7 @@ public class Board
 					System.out.print("  "+j+"  |");
 				}		
 			}
-			value=(value-1);
+			value=(value-1); 
 			System.out.print("\n");
 		}while(value>=1);
 		System.out.println(" -----------------------------------------------------------");
