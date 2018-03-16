@@ -150,7 +150,7 @@ public void displayResult(int noOfPlayers)
 		{
 			for(int i=0;i<noOfPlayers;i++)
 			{
-				if(cells[x].getPlayers()[i]!=null)
+				if(cells[x].getPlayers()[i]!=null)   
 				{	
 					count++;
 					System.out.println("====================");
