@@ -10,10 +10,10 @@ public class Board{
 	public Cell[] cells=new Cell[100];
 	ArrayList<Component> components=new ArrayList<Component>();
 	
-	public void cellInitialisation(){
+	public void cellInitialisation(int noOfPlayers){
 		for(int i=0;i<100;i++)
 		{
-			cells[i]=new Cell(i+1);
+			cells[i]=new Cell((i+1),noOfPlayers);
 			 
 		}
 	}

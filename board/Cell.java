@@ -2,7 +2,7 @@ package com.lxisoft.snakeandladder2.board;
 import com.lxisoft.snakeandladder2.game.Player;
 public class Cell{
 	private int number;
-	Player[] players=new Player[2];
+	Player[] players;
 	
 	public void setPlayers(Player[] players)
 	{
@@ -17,7 +17,7 @@ public class Cell{
 	public void setPlayer(Player player)
 	{
 		outerLoop:
-		for(int i=0;i<2;i++)
+		for(int i=0;i<players.length;i++)
 		{
 			if(players[i]==null)
 			{
@@ -29,8 +29,9 @@ public class Cell{
 		}
 	}
 			
-	public Cell(int number)
+	public Cell(int number,int noOfPlayers)
 	{
+		players=new Player[noOfPlayers];
 		this.number=number;
 		
 	}
