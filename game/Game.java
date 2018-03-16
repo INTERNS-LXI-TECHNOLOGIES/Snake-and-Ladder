@@ -45,110 +45,120 @@ public void gameLaunch()
 	{
 		board.displayCells();
  		Cell[] cells=board.getCells();
+		int noOfPlayers=players.length;
 		whileLoop:
 			do
 			{
-				for(int i=0;i<players.length;i++)
+				for(int i=0;i<noOfPlayers;i++)
 				{
-					int diceNumber;
-					do
-					{ 
-					
-					
-					
-						System.out.println("player "+players[i].getID()+" "+players[i].getName()+"s  chance"+"\n"+"=============================");
-						diceNumber=rollDice();
-						System.out.println("you got "+diceNumber); 
-						System.out.print("[] 1 to continew:");
-						int x=scan.nextInt();
-						if(searchPlayerCell(players[i])!=null)
-						{
-								
-							movePlayer(players[i],diceNumber);
-						}
-						else
+					if(players[i]!=null)
+					{
+						int diceNumber;
+						do
 						{ 
-							if(diceNumber==1)
+						
+						
+						
+							System.out.println("player "+players[i].getID()+" "+players[i].getName()+"s  chance"+"\n"+"=============================");
+							//diceNumber=rollDice();
+							//System.out.println("you got "+diceNumber);
+							System.out.print("[] 1 to continuen :");
+							diceNumber=scan.nextInt();
+							if(searchPlayerCell(players[i])!=null)
 							{
-								
-								Player []tempPlayers=cells[0].getPlayers();
-								outerLoop3:
-								for(int y=0;y<players.length;y++)
-								{
-									if(tempPlayers[y]==null)
-									{
-										tempPlayers[y]=players[i];
-										break;
-									}
-								}
-								cells[0].setPlayers(tempPlayers);
-	
+									
+								movePlayer(players[i],diceNumber);
 							}
-						} 
-						if(diceNumber==1 || diceNumber==6)
-						{
-							System.out.println("[] you have another chance []");
-						}
-						cls();
-						board.displayCells();
-						resultCheck(players[i]);
-					}while(diceNumber==1 || diceNumber==6);	
+							else
+							{ 
+								if(diceNumber==1)
+								{
+									
+									Player []tempPlayers=cells[0].getPlayers();
+									outerLoop3:
+									for(int y=0;y<players.length;y++)
+									{
+										if(tempPlayers[y]==null)
+										{
+											tempPlayers[y]=players[i];
+											break;
+										}
+									}
+									cells[0].setPlayers(tempPlayers);
+		
+								}
+							} 
+							if(diceNumber==1 || diceNumber==6)
+							{
+								System.out.println("[] you have another chance []");
+							}
+							cls();
+							board.displayCells();
+							if(resultCheck(players[i],noOfPlayers)==true)
+							{
+								break whileLoop;
+							}
+						}while(diceNumber==1 || diceNumber==6);	
+					}
 				}
-			}while(cells[99].getPlayers()[1]==null && cells[99].getPlayers()[0]==null);
+				
+			}while(winners.size()!=noOfPlayers-1);
 
 	}
-public void resultCheck(Player player)
+public boolean resultCheck(Player player,int noOfPlayers)
 	{
+		boolean result=false;
 		int count=0;
 		Cell [] cells=board.getCells();
-		for(Player tempPlayer:cells[99].getPlayers())
+		Player []tempPlayers=cells[99].getPlayers();
+		for(int y=0;y<players.length;y++)
 		{
-			if(tempPlayer==player)
+			if(tempPlayers[y]==player)
 			{
-				for(int p=0;p<players.length;p++)
+				winners.add(player);
+				tempPlayers[y]=null;
+				for(int j=0;j<players.length;j++)
 				{
-					winners.add(player);
-					Player []tempPlayers=cells[99].getPlayers();
-					for(int y=0;y<players.length;y++)
+					if(players[j]==player)
 					{
-						if(tempPlayers[y]==player)
-						{
-							tempPlayers[y]=null;
-							break;
-						}
+						players[j]=null;
 					}
-					cells[99].setPlayers(tempPlayers);
 				}
 			}
-			
 		}
-		if(winners.size()==(players.length-1))
+		cells[99].setPlayers(tempPlayers);
+		
+		if(winners.size()==noOfPlayers)
 		{
-			 displayResult();
+			 displayResult(noOfPlayers);
+			 result=true;
 		}
+	return result;
 	}
-public void displayResult()
-	{
+public void displayResult(int noOfPlayers)
+	{ 
+		int count=0;
 		for(Player winner:winners)
 		{
+			count++;
 			System.out.println("====================");
-			System.out.println("   []"+winner.getName());
+			System.out.println("  ["+count+"]"+winner.getName());
 			System.out.println("====================");
 		}
 		Cell [] cells=board.getCells();
-		for(int x=99;x>=0;x++)
+		for(int x=99;x>=0;x--)
 		{
-			for(int i=0;i<players.length;i++)
+			for(int i=0;i<noOfPlayers;i++)
 			{
 				if(cells[x].getPlayers()[i]!=null)
 				{	
+					count++;
 					System.out.println("====================");
-					System.out.println("   []"+cells[x].getPlayers()[i].getName());
+					System.out.println("  ["+count+"]"+cells[x].getPlayers()[i].getName());
 					System.out.println("====================");
 					Player []tempPlayers=cells[x].getPlayers();
 					tempPlayers[i]=null;
 					cells[x].setPlayers(tempPlayers);
-					
 				}
 			}
 		}
