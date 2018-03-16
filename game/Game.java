@@ -7,11 +7,12 @@ import com.lxisoft.snakeandladderv3.board.components.Ladder;
 import com.lxisoft.snakeandladderv3.board.components.Snake;
 import com.lxisoft.clearscreen.Cls;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Game{
 	
 	Board board=new Board();
-	
+	ArrayList<Player> winners=new ArrayList<Player>();
 	Player[] players;
 	Scanner scan=new Scanner(System.in);
 	public void initialization()
@@ -60,65 +61,69 @@ public class Game{
 		int diceNumber;
 		int ch;
 		Cell []cells=board.cells;
-		whileLoop:
+	
 		do
 		{
 			for(int i=0;i<players.length;i++)
 			{
 				do{
-					System.out.println(players[i].getName()+" throws the dice");
-					ch=scan.nextInt();
-					diceNumber=diceNumberGeneration();
-					System.out.println("you got "+diceNumber);
 					
-					//displayDiceNumber(diceNumber);
-					try{
-						Thread.sleep(2000);
-						}
-						catch (Exception e){}
-					
-					Cell filledCell=searchPlayer(players[i]);
-					if(filledCell!=null)
-					{
-						move(diceNumber,players[i]);
-					}
-					else
-					{
-						if(diceNumber==1)
-						{
-							Player [] tempPlayers=cells[0].getPlayers();
-							for(int f=0;f<players.length;f++)
-							{
-								if(tempPlayers[f]==null)
-								{
-									tempPlayers[f]=players[i];
-									System.out.println(tempPlayers[f].getName()+" t111");
-									break;
-								}
+						System.out.println(players[i].getName()+" throws the dice");
+						ch=scan.nextInt();
+						diceNumber=diceNumberGeneration();
+						System.out.println("you got "+diceNumber);
+						
+						//displayDiceNumber(diceNumber);
+						try{
+							Thread.sleep(1000);
 							}
-							//System.out.println(playrs[0].getName()+"haiii 222");
-							cells[0].setPlayers(tempPlayers);
+							catch (Exception e){}
+						
+						Cell filledCell=searchPlayer(players[i]);
+						if(filledCell!=null)
+						{
+							move(diceNumber,players[i]);
 						}
-					}
-					cls();
+						else
+						{
+							if(diceNumber==1)
+							{
+								Player [] tempPlayers=cells[0].getPlayers();
+								for(int f=0;f<players.length;f++)
+								{
+									if(tempPlayers[f]==null)
+									{
+										tempPlayers[f]=players[i];
+										System.out.println(tempPlayers[f].getName()+" t111");
+										break;
+									}
+								}
+								//System.out.println(playrs[0].getName()+"haiii 222");
+								cells[0].setPlayers(tempPlayers);
+							}
+						}
+						cls();
+						
+						board.displayCells();
+						if(board.getCells()[99].getPlayers()[0]==players[i] || board.getCells()[99].getPlayers()[1]==players[i])
+						{
+							System.out.println("winner is "+players[i].getName());
+							winners.add(players[i]);
+							
+						}
 					
-					board.displayCells();
-					if(board.getCells()[99].getPlayers()[0]==players[i] || board.getCells()[99].getPlayers()[1]==players[i])
-					{
-						System.out.println("winner is "+players[i].getName());
-						break whileLoop;
-					}
+						
+						
 				}while(diceNumber==1 || diceNumber==6);
 				
-				
 			}
+				
+			
 			
 		//}
 		//while(x==1);
-		}while(cells[99].getPlayers()[0]==null && cells[99].getPlayers()[1]==null);
-		
-				
-		
+		}	while(winners.size()==(players.length-1));			
+		rankList();
 	}	
 	
 	public void playerDetails()
@@ -139,6 +144,15 @@ public class Game{
 
 
 	}
+	
+	
+	public void rankList(){
+		for(Player player:winners){
+			System.out.println(""+players);
+		}
+		
+		
+	}
 
 	public int diceNumberGeneration()
 	{
@@ -146,8 +160,8 @@ public class Game{
 		
 		do
 		{
-			
-			diceNumber=(int)((Math.random())*6)+1;
+				diceNumber=scan.nextInt();
+			//diceNumber=(int)((Math.random())*6)+1;
 			
 		}while(diceNumber==0);
 		//System.out.println("Dice Number: "+diceNumber);

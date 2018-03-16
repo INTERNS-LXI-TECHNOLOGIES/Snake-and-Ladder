@@ -17,7 +17,7 @@ public class Cell{
 	public void setPlayer(Player player)
 	{
 		outerLoop:
-		for(int i=0;i<2;i++)
+		for(int i=0;i<players.length;i++)
 		{
 			if(players[i]==null)
 			{
