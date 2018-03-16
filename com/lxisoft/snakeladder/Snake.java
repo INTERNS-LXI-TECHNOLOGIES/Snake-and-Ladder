@@ -3,6 +3,7 @@ public class Snake
 {
 	private int dropStartPosition;
 	private int dropEndPosition;
+	private String snakeName;
 	
 	public void setDropStartPosition(int dropStart)
 	{
@@ -20,5 +21,14 @@ public class Snake
 	public int getDropEndPosition()
 	{
 		return this.dropEndPosition;
+	}
+	
+	public void setSnakeName(String nam)
+	{
+		this.snakeName=nam;
+	}
+	public String getSnakeName()
+	{
+		return this.snakeName;
 	}
 }

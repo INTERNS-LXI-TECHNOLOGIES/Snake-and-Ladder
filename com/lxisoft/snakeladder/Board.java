@@ -29,8 +29,4 @@ public class Board
 	{
 		return this.ladder;
 	}
-	public Board()
-	{
-		
-	}
 }

@@ -23,6 +23,14 @@ public class LadderController
 		ladder.get(5).setClimbEndPosition(86);
 		ladder.get(6).setClimbStartPosition(73);
 		ladder.get(6).setClimbEndPosition(95);
+		ladder.get(0).setLadderName("L0");
+		ladder.get(1).setLadderName("L1");
+		ladder.get(2).setLadderName("L2");
+		ladder.get(3).setLadderName("L3");
+		ladder.get(4).setLadderName("L4");
+		ladder.get(5).setLadderName("L5");
+		ladder.get(6).setLadderName("L6");
+		
 		brd.setLadder(ladder);
 	}
 	public void climb()
