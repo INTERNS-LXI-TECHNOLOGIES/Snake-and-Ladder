@@ -1,32 +1,48 @@
+
 package com.lxi.snakeandladder.game;
-import com.lxi.snakeandladder.P
+import com.lxi.snakeandladder.board.Cell;
+import com.lxi.snakeandladder.player.Player;
+import java.util.Scanner;
 public class Game
 {
 Board board = new Board();
-Player player[] = new player[2];
+Player player[] = new Player[2];
 int diceThrow;
 int rotateDice;
 
-(int) ((Math.random()*6)+1);
-scanner scan = new Scanner(System.in);
+
+Scanner scan = new Scanner(System.in);
 
 
 public void playGame()
 {
-  	board.getBoard();
-	System.out.print("Player1 chance");
-    System.out.print("Enter 1 to throw the dice: \n ");
+	int playerSelection=0;
+while(player[0].getCellNumber<100&&player[1].getCellNumber<100)
+{
+    board.getBoard();
+	System.out.println("Player "+(playerSelection+1)+" chance");
+    System.out.println("Enter 1 to throw the dice:  ");
     diceThrow = scan.nextInt();
-    rotateDice=((Math.random()*6)+1);
+    rotateDice=getDiceValue();
+    System.out.print("you got "+rotateDice);
 
-    if(rotateDice==1)
+    if(rotateDice==1&&player[playerSelection].getCellNumber()==0)
      {
-	   System.out.print("Entered into the game:");
-	   
+	   System.out.print("Entered into the Game:");
+	   Cell[] cells=board.cells;
+	   cells[0].setPlayer(player[0]);
      }
-	 
-   
-   
+	 else
+	 {
+		 cells[rotateDice].setPlayer(player[0]);
+	 }
+	 playerSelection=(playerSelection+1)%2;
 }
+}
+    public int getDiceValue()
+    {
+	   return (int) ((Math.random()*6)+1);
+    }
+
 
 }

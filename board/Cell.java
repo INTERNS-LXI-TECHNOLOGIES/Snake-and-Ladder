@@ -1,3 +1,4 @@
+package com.lxi.snakeandladder.board;
 public class Cell
 { 
   private Player player;
@@ -6,7 +7,7 @@ public class Cell
      {
        this.player = player;
      } 
-	public return getPlayer()
+	public Player getPlayer()
       {
 	     return player;
 	  }	

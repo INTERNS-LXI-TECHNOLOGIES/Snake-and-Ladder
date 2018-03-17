@@ -1,7 +1,8 @@
 package com.lxi.snakeandladder.board;
+import com.lxi.snakeandladder.board.Cell;
 public class Board
 {
-   Cell[][] cells= new Cell[10][10];
+   int cells[][]= new int[10][10];
    //Snake snake;
    //Ladder ladder;
   //cell[0][0].setPlayer(players[0]);
