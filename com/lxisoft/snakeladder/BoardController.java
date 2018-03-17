@@ -29,7 +29,11 @@ public class BoardController
 			{
 				if(s.getDropStartPosition()==c.getCellNumber())
 				{
-					c.setHasSnake(true);
+					c.setHasSnakeHead(true);
+				}
+				if(s.getDropEndPosition()==c.getCellNumber())
+				{
+					c.setHasSnakeTale(true);
 				}
 			}
 		}
@@ -41,24 +45,40 @@ public class BoardController
 			{
 				if(l.getClimbStartPosition()==c.getCellNumber())
 				{
-					c.setHasLadder(true);
+					c.setHasLadderStart(true);
+				}
+				if(l.getClimbEndPosition()==c.getCellNumber())
+				{
+					c.setHasLadderEnd(true);
 				}
 			}
 		}
-		
+		int lad=6;
+		int sna=6;
 		int index=99;
 		for(int j=0;j<10;j++)
 		{
 			for(int i=0;i<10;i++)
 			{
 				System.out.print(cells.get(index).getCellNumber());
-				if(cells.get(index).getHasLadder()==true)
+				if(cells.get(index).getHasLadderStart()==true)
 				{
-					System.out.print("L");
+					System.out.print("LD");
+					lad--;
+					
 				}
-				if(cells.get(index).getHasSnake()==true)
+				if(cells.get(index).getHasLadderEnd()==true)
 				{
-					System.out.print("S");
+					System.out.print("ld");
+				}
+				if(cells.get(index).getHasSnakeHead()==true)
+				{
+					System.out.print("SN");
+					sna--;
+				}
+				if(cells.get(index).getHasSnakeTale()==true)
+				{
+					System.out.print("sn");
 				}
 				System.out.print("	");
 				index--;

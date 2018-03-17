@@ -2,8 +2,10 @@ import java.util.*;
 public class Cell
 {
 	private int cellNumber;
-	private boolean hasSnake;
-	private boolean hasLadder;
+	private boolean hasSnakeHead;
+	private boolean hasSnakeTale;
+	private boolean hasLadderStart;
+	private boolean hasLadderEnd;
 	public void setCellNumber(int cellNo)
 	{
 		this.cellNumber=cellNo;
@@ -13,21 +15,39 @@ public class Cell
 		return this.cellNumber;
 	}
 	
-	public void setHasSnake(boolean hasSn)
+	public void setHasSnakeHead(boolean hasSnH)
 	{
-		this.hasSnake=hasSn;
+		this.hasSnakeHead=hasSnH;
 	}
-	public boolean getHasSnake()
+	public boolean getHasSnakeHead()
 	{
-		return this.hasSnake;
+		return this.hasSnakeHead;
 	}
 	
-	public void setHasLadder(boolean hasld)
+	public void setHasSnakeTale(boolean hasSnT)
 	{
-		this.hasLadder=hasld;
+		this.hasSnakeTale=hasSnT;
 	}
-	public boolean getHasLadder()
+	public boolean getHasSnakeTale()
 	{
-		return this.hasLadder;
+		return this.hasSnakeTale;
+	}
+	
+	public void setHasLadderStart(boolean hasLdS)
+	{
+		this.hasLadderStart=hasLdS;
+	}
+	public boolean getHasLadderStart()
+	{
+		return this.hasLadderStart;
+	}
+	
+	public void setHasLadderEnd(boolean hasLdE)
+	{
+		this.hasLadderEnd=hasLdE;
+	}
+	public boolean getHasLadderEnd()
+	{
+		return this.hasLadderEnd;
 	}
 }

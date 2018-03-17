@@ -5,5 +5,6 @@ public class TDD
 	{
 		GameController gameController=new GameController();
 		gameController.createGame();
+		gameController.playGame();
 	}
 }

@@ -25,7 +25,7 @@ public class Game
 	{
 		this.die=di;
 	}
-	public Die getBoard()
+	public Die getDie()
 	{
 		return this.die;
 	}
