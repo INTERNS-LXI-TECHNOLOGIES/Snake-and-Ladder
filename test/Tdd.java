@@ -1,11 +1,11 @@
 package com.lxisoft.snakeandladder.test;
-import com.lxisoft.snakeandladder.board.Board;
+import com.lxisoft.snakeandladder.board.GameBoard;
 public class Tdd
 {
 	public static void main(String args[])
 	{
-		Board board = new Board();
+		GameBoard gameBoard = new GameBoard();
 		
-		board.inputBoard();
+		gameBoard.inputBoard();
 	}
 }

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import com.lxisoft.snakeandladder.board.Snake;
 import com.lxisoft.snakeandladder.board.Ladder;
 import com.lxisoft.snakeandladder.player.Player;
-public class Board
+public class GameBoard
 {
 	int[] numbers = new int[100];
 	int value=numbers.length; 
@@ -13,7 +13,6 @@ public class Board
 	//Player players = new Player();
 	public void inputBoard()
 	{
-		players = new Players();
 		do
 		{
 			System.out.println(" -----------------------------------------------------------");
@@ -48,7 +47,12 @@ public class Board
 			System.out.print("\n");
 		}while(value>=1);
 		System.out.println(" -----------------------------------------------------------");
+		//players.die();	
+	}
+	
+	public void movePlayers
+	{
+		players = new Player();
 		players.inputPlayers();
-		//players.die();
 	}
 }
