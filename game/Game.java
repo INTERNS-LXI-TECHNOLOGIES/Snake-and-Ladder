@@ -31,7 +31,7 @@ public class Game{
 		Ladder ladder3=new Ladder(3,cells[61],cells[74]);
 		Ladder ladder4=new Ladder(4,cells[76],cells[92]);
 		board.setComponents(ladder1,ladder2,ladder3,ladder4);
-		//board.setComponents(snake1);
+		
 		
 		startGame();
 	}
@@ -46,8 +46,6 @@ public class Game{
 			players[i]=new Player((i+1));
 			
 		}
-		
-		
 	}
 	public void startGame()
 	{
@@ -61,22 +59,26 @@ public class Game{
 		int diceNumber;
 		int ch;
 		Cell []cells=board.cells;
-	
+		whileloop:
 		do
 		{
 			for(int i=0;i<players.length;i++)
 			{
+				
 				do{
-					
+					diceNumber=0;
+					if(players[i]!=null){
+				
 						System.out.println(players[i].getName()+" throws the dice");
 						ch=scan.nextInt();
+						
 						diceNumber=diceNumberGeneration();
 						System.out.println("you got "+diceNumber);
 						
-						//displayDiceNumber(diceNumber);
+						
 						try{
 							Thread.sleep(1000);
-							}
+						}
 							catch (Exception e){}
 						
 						Cell filledCell=searchPlayer(players[i]);
@@ -94,38 +96,53 @@ public class Game{
 									if(tempPlayers[f]==null)
 									{
 										tempPlayers[f]=players[i];
-										System.out.println(tempPlayers[f].getName()+" t111");
+										System.out.println(tempPlayers[f].getName());
 										break;
 									}
 								}
-								//System.out.println(playrs[0].getName()+"haiii 222");
 								cells[0].setPlayers(tempPlayers);
 							}
 						}
 						cls();
 						
 						board.displayCells();
-						if(board.getCells()[99].getPlayers()[0]==players[i] || board.getCells()[99].getPlayers()[1]==players[i])
+						if(resultCheck(players[i]))
 						{
-							System.out.println("winner is "+players[i].getName());
-							winners.add(players[i]);
 							
+							winners.add(players[i]);
+							players[i]=null;
+							
+							if(winners.size()==players.length-1){
+								System.out.println("Winners are :");
+								rankList();
+								break whileloop;
+							}
 						}
+					}
 					
-						
-						
 				}while(diceNumber==1 || diceNumber==6);
-				
 			}
 				
 			
 			
 		//}
 		//while(x==1);
-		}	while(winners.size()==(players.length-1));			
-		rankList();
+		}	while(winners.size()!=players.length-1);			
+		//rankList();
+		
 	}	
-	
+	public boolean resultCheck(Player player)
+	{
+		boolean result=false;
+		for(Player tempPlayer:board.cells[99].getPlayers())
+		{
+			if(tempPlayer==player)
+			{
+					result=true;
+			}
+		}
+		return result;
+	}
 	public void playerDetails()
 	{
 		for(int i=0;i<players.length;i++)
@@ -148,8 +165,17 @@ public class Game{
 	
 	public void rankList(){
 		for(Player player:winners){
-			System.out.println(""+players);
+			
+			System.out.println(""+player.getName());
 		}
+		for(int i=0;i<players.length;i++){
+			if(players[i]!=null){
+				System.out.println(""+players[i].getName());
+				break;
+			}
+			
+		}
+		
 		
 		
 	}
@@ -160,22 +186,15 @@ public class Game{
 		
 		do
 		{
-				diceNumber=scan.nextInt();
-			//diceNumber=(int)((Math.random())*6)+1;
+				//diceNumber=scan.nextInt();
+			diceNumber=(int)((Math.random())*6)+1;
 			
 		}while(diceNumber==0);
-		//System.out.println("Dice Number: "+diceNumber);
+		
 		return diceNumber;
 		
 	}
 	
-	
-	public void enterGame()
-	{
-		
-		System.out.println("game---");
-		
-	}
 	public void move(int diceNumber,Player player)
 	{
 		
@@ -293,11 +312,7 @@ public class Game{
 		}
 	
 	}
-	/*public void displayDiceNumber(int diceNumber)
-	{
-		System.out.println("Dice Number: "+diceNumber);
-	}*/
-	
+
 	public void cls()
 	{
 		Cls clrscr=new Cls();
