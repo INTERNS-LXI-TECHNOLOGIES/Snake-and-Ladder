@@ -7,23 +7,24 @@ ArrayList<Snake> snakes = new ArrayList<Snake>();
 
 
 
-public void gameImplementation()
+
+public void gameImplementation(Player player,int playerId)
 {	
 	 for(int i = 9;i>=0;i--)
 	 {
 		 if(i%2 ==1)
 		 {
-			 leftToRight(i);
+			 leftToRight(i,player,playerId);
 		 }
 		 else if(i%2==0)
 		 {
-			 rightToLeft(i);
+			 rightToLeft(i,player,playerId);
 		 }
 		 System.out.print("\n");		
 	 } 
 }
 	
-			 public void rightToLeft(int i)
+			 public void rightToLeft(int i,Player player,int playerId)
 			 {
 				 
 	
@@ -34,12 +35,24 @@ public void gameImplementation()
 				
 				 if(i==0&&j<9)
 				 {
-		   
-					System.out.print("["+i+boxes[i][j]+"]"+getSpace()); 
+					if(player.position==boxes[i][j])
+					{
+					System.out.print((playerId+1)+"["+i+boxes[i][j]+"]"+getSpace()); 
+					}
+					else{
+						
+						System.out.print("["+i+boxes[i][j]+"]"+getSpace()); 
+					}
 				 }
 				 else{
-				
-			   System.out.print("["+boxes[i][j]+"]"+getSpace());
+				if(player.position==boxes[i][j])
+					{
+					System.out.print((playerId+1)+"["+boxes[i][j]+"]"+getSpace()); 
+					}
+					else
+					{
+			         System.out.print("["+boxes[i][j]+"]"+getSpace());
+					}
 		   
 				 }
 			 }
@@ -49,7 +62,7 @@ public void gameImplementation()
 			 
 			 
 			 
-			 public void leftToRight(int i)
+			 public void leftToRight(int i,Player player,int playerId)
 			 {
 			
 		   for(int j = 9;j>=0;j--)
@@ -57,6 +70,11 @@ public void gameImplementation()
 			int k=(10*i)+j+1;
 			boxes[i][j] = k;
 			   
+			   if(player.position==boxes[i][j])
+					{
+					System.out.print((playerId+1)+"["+i+boxes[i][j]+"]"+getSpace()); 
+					}
+					else
 				  System.out.print("["+boxes[i][j]+"]"+getSpace());
 			  
 		   }

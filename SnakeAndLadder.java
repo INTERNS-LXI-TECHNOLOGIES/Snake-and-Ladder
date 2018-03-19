@@ -1,4 +1,6 @@
 package com.lxisoft.snakeandladder;
+import com.lxisoft.clearscreen.Clearscreen;
+import java.io.*;
 import java.util.*;
 public class SnakeAndLadder
 {
@@ -7,7 +9,7 @@ public class SnakeAndLadder
    /*Player player1 = new Player();
    Player player2 = new Player();*/
   // ArrayList<Player> players = new ArrayList<Player>();
-   
+   Clearscreen cls = new Clearscreen();
    Scanner scan = new Scanner(System.in);
    int playerId=0;
    int choice;
@@ -21,10 +23,23 @@ public class SnakeAndLadder
 		{
 			players[i] = new Player();
 		}
-			board.gameImplementation();
+		board.gameImplementation(players[playerId],playerId);
 		do
 		{
-		
+			
+			
+			/*try {
+					   cls.clear();
+			           board.gameImplementation(players[playerId],playerId);
+	                   
+					   
+				   }
+				   catch(IOException error){
+					   System.out.print("Error.....");
+				   }
+				   catch(InterruptedException error){
+					   System.out.print("Error.....");
+				   }*/
 		
 			System.out.println("Player "+(playerId+1)+"'s Chance :");
 			System.out.println("Enter 1 to throw Dice :");
@@ -35,16 +50,24 @@ public class SnakeAndLadder
 			}
 			
 			
-			
-		do{
+			try{
+		         do{
 			diceValue=(int) (Math.random()*6)+1;
-			System.out.print("Dice Value"+diceValue);
+			System.out.println("Dice Value"+diceValue);
 			isToRepeat = updatePosition(diceValue,playerId);
+			cls.clear();
+			board.gameImplementation(players[playerId],playerId);
+			Thread.sleep(1000);
 		  }while(isToRepeat==true);
-	        
 			playerId = (playerId+1)%3;
+			}catch(Exception e)
+			{
+				System.out.print(".....");
+			}
+			
 			
 		}while(checkWin(playerId)==false);	  
+			
 	  
 	}
 	
@@ -54,10 +77,10 @@ public class SnakeAndLadder
 	public boolean updatePosition(int diceValue,int playerId)
 	{
 		
-		System.out.print(players[0].position+" "+players[1].position);
+		//System.out.print(players[0].position+" "+players[1].position);
 	   if(diceValue==1&&players[playerId].position ==0)
 	   {
-		   System.out.print("Player"+1+" is entered into game...");
+		   System.out.println("Player"+1+" is entered into game...");
 		   players[playerId].position = 1;
 	   }
 	   else if(players[playerId].position+diceValue<=100&&players[playerId].position>0)
@@ -66,12 +89,14 @@ public class SnakeAndLadder
 		   System.out.println("current position of player  "+players[playerId].position);
 	    }
 		
+			
 		
-		if(diceValue==6&&diceValue==1)
+		if(diceValue==6||diceValue==1)
 		{
 			return true;
 		}
 		return false;
+	
 	}
 	
 	
@@ -82,6 +107,7 @@ public class SnakeAndLadder
 		
 			if(players[playerId].position==100)
 			{
+				System.out.println("Player "+playerId+"  won........");
 				return true;
 			}
 		

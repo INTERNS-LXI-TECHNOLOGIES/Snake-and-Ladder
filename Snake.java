@@ -26,7 +26,7 @@ public void setSnakeDetails()
 	setHeadOfSnake((int) (Math.random()*79)+9);
 	do{
 	setTailOfSnake((int) (Math.random()*58)+2);
-	}while(this.headOfSnake<this.tailOfSnake);
+	}while(this.headOfSnake<this.tailOfSnake&&(this.headOfSnake-this.tailOfSnake)==15);
 }
 
 
