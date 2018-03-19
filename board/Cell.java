@@ -65,22 +65,17 @@ public class Cell{
 		
 		public void displayPlayers()
 		{
-			if(players[0]!=null)
+			for(int i=0;i<players.length;i++)
 			{
-				System.out.print("("+players[0].getNumber()+")");
+				if(players[i]!=null)
+				{
+					System.out.print("("+players[i].getNumber()+")");
+				}
+				else
+				{
+					System.out.print("   ");
+				}			
 			}
-			else
-			{
-				System.out.print("   ");
-			}			
-			if(players[1]!=null)
-			{
-				System.out.print("("+players[1].getNumber()+")");
-			}
-			else
-			{
-				System.out.print("   ");
-			}	
 		}
 		
 	
