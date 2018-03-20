@@ -6,6 +6,7 @@ public class Cell
 	private boolean hasSnakeTale;
 	private boolean hasLadderStart;
 	private boolean hasLadderEnd;
+	private ArrayList<Player> players=new ArrayList<Player>();
 	public void setCellNumber(int cellNo)
 	{
 		this.cellNumber=cellNo;

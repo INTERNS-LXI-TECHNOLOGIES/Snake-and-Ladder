@@ -1,8 +1,10 @@
 import java.util.*;
 public class DieController
 {
-	public void generateRandomNumber()
+	int number;
+	public int generateRandomNumber()
 	{
-	
+		number=(int)(Math.random()*5)+1;
+		return number;
 	}
 }
