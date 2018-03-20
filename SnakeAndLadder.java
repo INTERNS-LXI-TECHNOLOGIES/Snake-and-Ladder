@@ -6,8 +6,8 @@ public class SnakeAndLadder
 {
    Board board = new Board();
    Player[] players = new Player[3];
-   /*Player player1 = new Player();
-   Player player2 = new Player();*/
+   Snake [] snakes = new Snake[3];
+   Ladder[] ladders = new Ladder[3];
   // ArrayList<Player> players = new ArrayList<Player>();
    Clearscreen cls = new Clearscreen();
    Scanner scan = new Scanner(System.in);
@@ -16,14 +16,22 @@ public class SnakeAndLadder
    
 	public void game()
 	{
+	
 		int diceValue;
 		int i;
 		boolean isToRepeat=false;
 		for(i=0;i<3;i++)
 		{
 			players[i] = new Player();
+			snakes[i] = new Snake();
+			ladders[i] = new Ladder();
+			
+			snakes[i].setSnakeDetails();
+			ladders[i].setLadderDetails();
 		}
-		board.gameImplementation(players[playerId],playerId);
+		
+		//System.out.println("aaa");
+		board.gameImplementation(players,snakes,ladders);
 		do
 		{
 			
@@ -54,12 +62,15 @@ public class SnakeAndLadder
 		         do{
 			diceValue=(int) (Math.random()*6)+1;
 			System.out.println("Dice Value"+diceValue);
+			Thread.sleep(2000);
 			isToRepeat = updatePosition(diceValue,playerId);
+			Thread.sleep(2000);
 			cls.clear();
-			board.gameImplementation(players[playerId],playerId);
-			Thread.sleep(1000);
+			System.out.print("                                                                  \n");
+			board.gameImplementation(players,snakes,ladders);
+			Thread.sleep(2000);
 		  }while(isToRepeat==true);
-			playerId = (playerId+1)%3;
+			playerId = (playerId+1)%players.length;
 			}catch(Exception e)
 			{
 				System.out.print(".....");
@@ -80,7 +91,7 @@ public class SnakeAndLadder
 		//System.out.print(players[0].position+" "+players[1].position);
 	   if(diceValue==1&&players[playerId].position ==0)
 	   {
-		   System.out.println("Player"+1+" is entered into game...");
+		   System.out.println("Player"+(playerId+1)+" is entered into game...");
 		   players[playerId].position = 1;
 	   }
 	   else if(players[playerId].position+diceValue<=100&&players[playerId].position>0)

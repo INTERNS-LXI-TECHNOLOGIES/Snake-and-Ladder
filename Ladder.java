@@ -25,11 +25,11 @@ public class Ladder
   
   public void setLadderDetails()
   {
-	  setTop((int) (Math.random()*89));
-	  do
-	  {
-		  setBottom((int) (Math.random()*70)+2);
-	  }while(this.bottom<this.top&&(this.bottom-this.top)==15);
+	  setTop((int) (Math.random()*53)+28);
+	 // do
+	  //{
+		  setBottom((int) (Math.random()*47)+2);
+	  //}while(this.bottom<this.top&&(this.bottom-this.top)==15);
   }
   
   
