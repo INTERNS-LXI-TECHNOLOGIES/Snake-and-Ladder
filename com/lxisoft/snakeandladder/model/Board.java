@@ -1,3 +1,7 @@
+package com.lxisoft.snakeandladder.model;
+import com.lxisoft.snakeandladder.model.*;
+import java.util.List;
+
 public class Board{
 	
 	private List<Cell> cellList;

@@ -1,4 +1,13 @@
-public class Test{
+package com.lxisoft.snakeandladder.test;
+import com.lxisoft.snakeandladder.controller.GameController;
+
+public class Tdd{	
+	
+	/*	D:\notepad-workspace\LXI\Snake-and-Ladder		
+									
+		javac com\lxisoft\snakeandladder\test\Tdd.java
+
+		java com.lxisoft.snakeandladder.test.Tdd	*/
 	
 	public static void main(String[] args){
 		
@@ -15,8 +24,6 @@ public class Test{
 		gameController.displayBoard();
 		gameController.play(); 
 		
-		
-	
 	}
 	
 }

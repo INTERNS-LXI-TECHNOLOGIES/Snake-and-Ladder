@@ -1,3 +1,5 @@
+package com.lxisoft.snakeandladder.model;
+
 public class Cell{
 	
 	private int number;
@@ -23,9 +25,5 @@ public class Cell{
 	public void setHasLadder(boolean hasLadder){
 		this.hasLadder=hasLadder;
 	}
- 
-/* 	public boolean hasSnakeOrLadder(){
-		
-	} */
 	
 }

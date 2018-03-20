@@ -1,10 +1,13 @@
-public class Ladder extends SnakeOrLadder{
+package com.lxisoft.snakeandladder.model;
+
+public class Ladder{
 
 	private String name;
 	private int start;
 	private int end;
 
-	Ladder(String name, int start, int end){
+	//Constructor
+	public Ladder(String name, int start, int end){
 		this.name=name;
 		this.start=start;
 		this.end=end;

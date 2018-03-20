@@ -1,7 +1,10 @@
+package com.lxisoft.snakeandladder.model;
+
 public class Piece{
 	
 	private int position;
 	
+	//Constructor 
 	public Piece(int position){
 		this.position=position;
 	}
