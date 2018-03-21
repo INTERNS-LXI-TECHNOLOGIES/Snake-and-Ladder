@@ -18,9 +18,13 @@ public class Piece{
 	}
 
 
-	public int move(int number){ //code later
-		this.position=position+number;
-		return position;
+	public int move(int number){ 
+		if(position+number>100){ //check if player crossed 100
+			return 0;
+		} else{
+			this.position=position+number;
+			return position;
+		}	
 	}
 	
 }

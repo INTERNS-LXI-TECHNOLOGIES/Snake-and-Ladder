@@ -2,6 +2,7 @@ package com.lxisoft.snakeandladder.controller;
 import com.lxisoft.snakeandladder.model.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class GameController{  	
 	
@@ -117,7 +118,7 @@ public class GameController{
 	}
 	
 	//Play 
-	public void play(){
+	public void play() throws InterruptedException{
 		
 		int  diceNumber=0, totalDiceNumber=0, piecePosition;
 		Player player1 = game.getPlayer1();
@@ -130,13 +131,19 @@ public class GameController{
 		List<Cell> cellList = board.getCellList();
 		boolean player1EnteredCell1 = false, player2EnteredCell1 = false;
 		
-		System.out.println("\n ==== GAME BEGINS ====");
+		System.out.println("\n\n		 ==== GAME BEGINS ====");
 		
 		while(true){		//Play Till Any One Wins
-				
-			if(!player1EnteredCell1){					//Check if Player 1 got 1							
+			
+			//Reset dice
+			diceNumber = 0;		
+			totalDiceNumber = 0;
+			
+			if(!player1EnteredCell1){					//Check if Player 1 got 1	
+				TimeUnit.SECONDS.sleep(3);			
 				System.out.println("\n Player 1 throws dice");
 				diceNumber = player1.toss(dice);
+				TimeUnit.SECONDS.sleep(3);
 				System.out.println("\n Player 1 got "+diceNumber);
 				if(diceNumber==1){
 					player1EnteredCell1 = true;
@@ -146,12 +153,16 @@ public class GameController{
 			} else{
 				
 				while(true){							//Roll Dice Again If A 6 Is Got
+					
 					if(diceNumber==6){
+						TimeUnit.SECONDS.sleep(3);
 						System.out.println("\n Player 1 throws again");
 					}else{
+						TimeUnit.SECONDS.sleep(3);
 						System.out.println("\n Player 1 throws dice");
 					}			
 					diceNumber = player1.toss(dice);
+					TimeUnit.SECONDS.sleep(3);
 					System.out.println("\n Player 1 got "+diceNumber);
 					totalDiceNumber = totalDiceNumber + diceNumber;
 					if(diceNumber!=6){
@@ -160,51 +171,68 @@ public class GameController{
 				}
 			
 				piecePosition = piece1.move(totalDiceNumber);
-				System.out.println("\n Player 1 moves "+totalDiceNumber+"cells ahead...to cell no. "+piecePosition);
-				cell = cellList.get(piecePosition-1);
 				
-				if(cell.getHasSnake()){					//Check if Cell has Snake
-					System.out.println("\n Oops.. The cell has snake");
-					for(Snake snake : snakeList){
-						if(snake.getStart()==piecePosition){
-							piecePosition = snake.getEnd();
-							System.out.println("\n Player 1 goes down to "+piecePosition);
-							piece1.setPosition(piecePosition);
+				if(piecePosition!=0){	//Throws that don't exceed 100
+					TimeUnit.SECONDS.sleep(3);
+					System.out.println("\n Player 1 moves "+totalDiceNumber+"cells ahead...to cell no. "+piecePosition);
+					cell = cellList.get(piecePosition-1);
+					
+					if(cell.getHasSnake()){					//Check if Cell has Snake
+						TimeUnit.SECONDS.sleep(3);
+						System.out.println("\n Oops.. The cell has snake");
+						for(Snake snake : snakeList){
+							if(snake.getStart()==piecePosition){
+								piecePosition = snake.getEnd();
+								System.out.println("\n Player 1 goes down to "+piecePosition);
+								piece1.setPosition(piecePosition);
+							}
+						}
+					} else if(cell.getHasLadder()){			//Check if Cell has Ladder 
+						TimeUnit.SECONDS.sleep(3);
+						System.out.println("\n Wow.. The cell has ladder");
+						for(Ladder ladder : ladderList){
+							if(ladder.getStart()==piecePosition){
+								piecePosition = ladder.getEnd();
+								System.out.println("\n Player 1 climbs up to "+piecePosition);
+								piece1.setPosition(piecePosition);
+							}
 						}
 					}
-				} else if(cell.getHasLadder()){			//Check if Cell has Ladder  
-					System.out.println("\n Wow.. The cell has ladder");
-					for(Ladder ladder : ladderList){
-						if(ladder.getStart()==piecePosition){
-							piecePosition = ladder.getEnd();
-							System.out.println("\n Player 1 climbs up to "+piecePosition);
-							piece1.setPosition(piecePosition);
-						}
-					}
+				} else{	//Exceeds 100
+					TimeUnit.SECONDS.sleep(3);
+					System.out.println("\n Player 1 can't cross 100");
 				}
+				
+				
 			}
 			
 			//Reset dice
 			diceNumber = 0;		
 			totalDiceNumber = 0; 
 		
-			if(!player2EnteredCell1){					//Check if Player 1 got 1
+			if(!player2EnteredCell1){					//Check if Player 2 got 1
+				TimeUnit.SECONDS.sleep(3);
 				System.out.println("\n Player 2 throws dice");
 				diceNumber = player2.toss(dice);
+				TimeUnit.SECONDS.sleep(3);
 				System.out.println("\n Player 2 got "+diceNumber);
 				if(diceNumber==1){
 					player2EnteredCell1 = true;
 					piece2.move(diceNumber);
+					TimeUnit.SECONDS.sleep(3);
 					System.out.println("\n Player 2 enters cell 1 ");
 				}
 			} else{	
 				while(true){							//Roll Dice Again If A 6 Is Got
 					if(diceNumber==6){
+						TimeUnit.SECONDS.sleep(3);
 						System.out.println("\n Player 2 throws again");
 					}else{
+						TimeUnit.SECONDS.sleep(3);
 						System.out.println("\n Player 2 throws dice");
 					}
 					diceNumber = player2.toss(dice);
+					TimeUnit.SECONDS.sleep(3);
 					System.out.println("\n Player 2 got "+diceNumber);
 					totalDiceNumber = totalDiceNumber + diceNumber;
 					if(diceNumber!=6){
@@ -213,28 +241,37 @@ public class GameController{
 				}
 			
 				piecePosition = piece2.move(totalDiceNumber);
-				System.out.println("\n Player 2 moves "+totalDiceNumber+"cells ahead...to cell no. "+piecePosition);
-				cell = cellList.get(piecePosition-1);
+				
+				if(piecePosition!=0){	//Throws that don't exceed 100
+					TimeUnit.SECONDS.sleep(3);
+					System.out.println("\n Player 2 moves "+totalDiceNumber+"cells ahead...to cell no. "+piecePosition);
+					cell = cellList.get(piecePosition-1);
 
-				if(cell.getHasSnake()){					//Check if Cell has Snake
-					System.out.println("\n Oops.. The cell has snake");
-					for(Snake snake : snakeList){
-						if(snake.getStart()==piecePosition){
-							piecePosition = snake.getEnd();
-							System.out.println("\n Player 2 goes down to "+piecePosition);
-							piece2.setPosition(piecePosition);
+					if(cell.getHasSnake()){					//Check if Cell has Snake
+						TimeUnit.SECONDS.sleep(3);
+						System.out.println("\n Oops.. The cell has snake");
+						for(Snake snake : snakeList){
+							if(snake.getStart()==piecePosition){
+								piecePosition = snake.getEnd();
+								System.out.println("\n Player 2 goes down to "+piecePosition);
+								piece2.setPosition(piecePosition);
+							}
+						}
+					} else if(cell.getHasLadder()){			//Check if Cell has Ladder
+						TimeUnit.SECONDS.sleep(3);
+						System.out.println("\n Wow.. The cell has ladder");
+						for(Ladder ladder : ladderList){
+							if(ladder.getStart()==piecePosition){
+								piecePosition = ladder.getEnd();
+								System.out.println("\n Player 2 climbs up to "+piecePosition);
+								piece2.setPosition(piecePosition);
+							}
 						}
 					}
-				} else if(cell.getHasLadder()){			//Check if Cell has Ladder
-					System.out.println("\n Wow.. The cell has ladder");
-					for(Ladder ladder : ladderList){
-						if(ladder.getStart()==piecePosition){
-							piecePosition = ladder.getEnd();
-							System.out.println("\n Player 2 climbs up to "+piecePosition);
-							piece2.setPosition(piecePosition);
-						}
-					}
-				}
+				} else{	//Exceeds 100
+					TimeUnit.SECONDS.sleep(1);
+					System.out.println("\n Player 2 can't cross 100");
+				}	
 			}
 
 			if(piece1.getPosition()>=100 || piece2.getPosition()>=100){

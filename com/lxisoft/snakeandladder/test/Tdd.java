@@ -3,7 +3,7 @@ import com.lxisoft.snakeandladder.controller.GameController;
 
 public class Tdd{	
 	
-	/*	D:\notepad-workspace\LXI\Snake-and-Ladder		
+	/*	cd notepad-workspace\LXI\Snake-and-Ladder		
 									
 		javac com\lxisoft\snakeandladder\test\Tdd.java
 
@@ -22,7 +22,13 @@ public class Tdd{
 		gameController.createDice();
 		gameController.createGame();
 		gameController.displayBoard();
-		gameController.play(); 
+		try{
+			gameController.play();	
+		} 
+		catch(InterruptedException ex) 
+		{
+			Thread.currentThread().interrupt();
+		}
 		
 	}
 	
