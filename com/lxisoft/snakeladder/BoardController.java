@@ -17,7 +17,7 @@ public class BoardController
 		snakeController.createSnake(board);
 		ladderController.createLadder(board);
 	}
-	public void displayBoard()
+	public void displayBoard(Game gm)
 	{
 		ArrayList<Cell> cells=new ArrayList<Cell>();
 		cells=board.getCell();
@@ -55,16 +55,34 @@ public class BoardController
 		}
 		int lad=6;
 		int sna=6;
+		ArrayList<Player> players=new ArrayList<Player>();
+		players=gm.getPlayer();
 		int index=99;
 		for(int j=0;j<10;j++)
 		{
 			for(int i=0;i<10;i++)
 			{
 				System.out.print(cells.get(index).getCellNumber());
+				
 				if(cells.get(index).getHasLadderStart()==true)
 				{
 					System.out.print("LD");
 					lad--;
+					for(Player p:players)
+					{
+						if(p.getCurrentPosition()==cells.get(index).getCellNumber())
+						{
+							for(Ladder l:ladders)
+							{
+								if(p.getCurrentPosition()==l.getClimbStartPosition())
+								{
+									p.setCurrentPosition(l.getClimbEndPosition());
+								}
+							}
+							
+						}
+						
+					}
 					
 				}
 				if(cells.get(index).getHasLadderEnd()==true)
@@ -75,10 +93,32 @@ public class BoardController
 				{
 					System.out.print("SN");
 					sna--;
+					for(Player p:players)
+					{
+						if(p.getCurrentPosition()==cells.get(index).getCellNumber())
+						{
+							for(Snake s:snakes)
+							{
+								if(p.getCurrentPosition()==s.getDropStartPosition())
+								{
+									p.setCurrentPosition(s.getDropEndPosition());
+								}
+							}
+							
+						}
+						
+					}
 				}
 				if(cells.get(index).getHasSnakeTale()==true)
 				{
 					System.out.print("sn");
+				}
+				for(Player p:players)
+				{
+					if(p.getCurrentPosition()==cells.get(index).getCellNumber())
+					{
+						System.out.print(p.getPlayerName());
+					}
 				}
 				System.out.print("	");
 				index--;

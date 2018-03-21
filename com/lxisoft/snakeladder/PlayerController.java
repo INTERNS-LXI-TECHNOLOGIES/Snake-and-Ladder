@@ -9,9 +9,11 @@ public class PlayerController
 	{
 		System.out.println("Enter Number of Palyers");
 		noOfPlayers=scan.nextInt();
-		for(int i=0;i<noOfPlayers;i++)
+		for(int i=1;i<=noOfPlayers;i++)
 		{
 			Player p=new Player();
+			String name="P"+i;
+			p.setPlayerName(name);
 			players.add(p);
 		}
 		gm.setPlayer(players);
