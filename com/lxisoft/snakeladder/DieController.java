@@ -4,7 +4,7 @@ public class DieController
 	int number;
 	public int generateRandomNumber()
 	{
-		number=(int)(Math.random()*5)+1;
+		number=(int)(Math.random()*6)+1;
 		return number;
 	}
 }

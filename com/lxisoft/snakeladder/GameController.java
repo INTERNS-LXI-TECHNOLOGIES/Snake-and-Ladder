@@ -5,6 +5,7 @@ public class GameController
 	private BoardController boardController=new BoardController();
 	private PlayerController playerController=new PlayerController();
 	private Cell cell=new Cell();
+	ArrayList<Player> players=new ArrayList<Player>();
 	private ArrayList<Player> winners=new ArrayList<Player>();
 	Scanner scan = new Scanner(System.in);
 	public void createGame()throws Exception
@@ -15,8 +16,9 @@ public class GameController
 	public void playGame()throws Exception
 	{
 		playerController.createPlayer(game);
-		ArrayList<Player> players=new ArrayList<Player>();
 		
+		int rank=1;
+		int winnerCount=0;
 		players=game.getPlayer();
 		
 		while(true)
@@ -24,7 +26,8 @@ public class GameController
 			int len=players.size();
 			for(int i=0;i<len;i++)
 			{
-				
+				if(players.get(i).isWon()==false)
+				{
 				while(true)
 				{
 					System.out.println("Enter 1 to throw die Player "+(i+1));
@@ -59,16 +62,22 @@ public class GameController
 				}
 				//System.out.println(players.get(i).getCurrentPosition());
 				boardController.displayBoard(game);
+				}
 				for(Player p:players)
 				{
 					if(p.getCurrentPosition()==100)
 					{
-						winners.add(p);
-						players.remove(p);
+						p.setWon(true);
+						if(p.getPlayerRank()==0)
+						{
+							p.setPlayerRank(rank);
+							rank++;
+							winnerCount++;
+						}
 					}
 				}
 			}
-			if(len<=0)
+			if(players.size()==winnerCount)
 			{
 				break;
 			}
@@ -77,10 +86,10 @@ public class GameController
 	}
 	public void displayWinner()
 	{
-		int rank=1;
-		for(Player p:winners)
+		players=game.getPlayer();
+		for(Player p:players)
 		{
-			System.out.println(p.getPlayerName()+" finished as "+rank);
+			System.out.println(p.getPlayerName()+" finished as Rank "+p.getPlayerRank());
 		}
 	}
 }
