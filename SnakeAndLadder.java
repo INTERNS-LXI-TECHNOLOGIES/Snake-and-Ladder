@@ -5,32 +5,55 @@ import java.util.*;
 public class SnakeAndLadder
 {
    Board board = new Board();
-   Player[] players = new Player[3];
-   Snake [] snakes = new Snake[3];
-   Ladder[] ladders = new Ladder[3];
-  // ArrayList<Player> players = new ArrayList<Player>();
+   Player[] players = new Player[10];
+   //Snake [] snakes = new Snake[3];
+   //Ladder[] ladders = new Ladder[3];
+   ArrayList<Snake> snakes = new ArrayList<Snake>();
+   ArrayList<Ladder> ladders = new ArrayList<Ladder>();
+   
    Clearscreen cls = new Clearscreen();
-   Scanner scan = new Scanner(System.in);
+  
    int playerId=0;
    int choice;
+   int noOfPlayer;
+   boolean isCorrect;
    
 	public void game()
 	{
-	
+       ArrayList<Integer> totalValues = new ArrayList<Integer>();
+       Scanner scan = new Scanner(System.in);
+	   System.out.print("Enter the no.of players:");
+	   noOfPlayer = scan.nextInt();
+	   Board.noOfPlayer=noOfPlayer;
 		int diceValue;
 		int i;
 		boolean isToRepeat=false;
-		for(i=0;i<3;i++)
+		for(i=0;i<noOfPlayer;i++)
 		{
 			players[i] = new Player();
-			snakes[i] = new Snake();
-			ladders[i] = new Ladder();
-			
-			snakes[i].setSnakeDetails();
-			ladders[i].setLadderDetails();
 		}
 		
-		//System.out.println("aaa");
+		int r = 0;	
+		do
+		{
+			snakes.add(new Snake());
+			ladders.add(new Ladder());
+			snakes.get(snakes.size()-1).setSnakeDetails(totalValues);
+			ladders.get(ladders.size()-1).setLadderDetails(totalValues);
+			/*snakes[r] = new Snake();	
+			ladders[r] = new Ladder();
+		
+			snakes[r].setSnakeDetails(snakes,ladders,r);
+			System.out.println("Snake "+(r+1)+" Set SuccessFully");
+			
+			ladders[r].setLadderDetails(snakes,ladders,r);
+			System.out.println("Ladder "+(r+1)+" Set Successfully");*/
+		r++;
+			
+		}while(snakes.size()<=2);
+	
+		System.out.println("Snakes & Ladders Done..");
+		
 		board.gameImplementation(players,snakes,ladders);
 		do
 		{
@@ -63,14 +86,15 @@ public class SnakeAndLadder
 			diceValue=(int) (Math.random()*6)+1;
 			System.out.println("Dice Value"+diceValue);
 			Thread.sleep(2000);
-			isToRepeat = updatePosition(diceValue,playerId);
+			isToRepeat = updatePosition(diceValue,playerId,snakes,ladders);
 			Thread.sleep(2000);
 			cls.clear();
 			System.out.print("                                                                  \n");
 			board.gameImplementation(players,snakes,ladders);
 			Thread.sleep(2000);
 		  }while(isToRepeat==true);
-			playerId = (playerId+1)%players.length;
+			
+			playerId = (playerId+1)%noOfPlayer;
 			}catch(Exception e)
 			{
 				System.out.print(".....");
@@ -85,7 +109,7 @@ public class SnakeAndLadder
 	
 	
 	
-	public boolean updatePosition(int diceValue,int playerId)
+	public boolean updatePosition(int diceValue,int playerId,ArrayList<Snake> snakes,ArrayList<Ladder> ladders)
 	{
 		
 		//System.out.print(players[0].position+" "+players[1].position);
@@ -97,7 +121,26 @@ public class SnakeAndLadder
 	   else if(players[playerId].position+diceValue<=100&&players[playerId].position>0)
 		{
 		   players[playerId].position +=diceValue ;
-		   System.out.println("current position of player  "+players[playerId].position);
+		   System.out.println("current position of player"+(playerId+1)+" is "+players[playerId].position);
+		   
+		   for(int m  =snakes.size()-1;m<snakes.size();m++)
+		   {
+		   if(players[playerId].position == snakes.get(m).getHeadOfSnake()) 
+		   {
+			   System.out.print("Snakes Swallowing...............");
+			   players[playerId].position = snakes.get(m).getTailOfSnake();
+			   System.out.print("Current position of player"+(playerId+1)+"  is "+players[playerId].position);
+		   }
+		   }
+		   for(int n = ladders.size()-1;n<ladders.size();n++)
+		   {
+		   if(players[playerId].position == ladders.get(n).getBottom())
+		   {
+			   System.out.print("Moving..........");
+			   players[playerId].position = ladders.get(n).getTop();
+			    System.out.print("Current position of player"+(playerId+1)+" is "+players[playerId].position);
+		   }
+		   }
 	    }
 		
 			
@@ -124,6 +167,31 @@ public class SnakeAndLadder
 		
 		return false;
 	}
+	
+	public boolean checkCorrect(int head,int tail,int bottom,int top)
+	
+	
+	{
+		int flag=3;
+		if(head == bottom && head == top)
+		{
+		
+		flag =1;
+		}
+		if(tail == bottom && tail == top)
+		{
+			flag =2;
+		}
+		
+		if(flag<=2)
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
 }
  
 
