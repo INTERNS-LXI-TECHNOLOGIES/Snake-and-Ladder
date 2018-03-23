@@ -23,7 +23,7 @@ public void gameImplementation(Player[] players,ArrayList<Snake> snakes,ArrayLis
 		 {
 			  rightToLeft(i,players,snakes,ladders);
 		 }
-		 for(int t = 0;t<noOfPlayer;t++)
+		/* for(int t = 0;t<noOfPlayer;t++)
 		 {
 		 System.out.print("\n");
 		 for(int x=70;x>0;x--)
@@ -43,7 +43,7 @@ public void gameImplementation(Player[] players,ArrayList<Snake> snakes,ArrayLis
 		 }
 
 
-		}
+		}*/
 		 System.out.print("\n");
 	} 
 }
@@ -210,14 +210,14 @@ public void gameImplementation(Player[] players,ArrayList<Snake> snakes,ArrayLis
 				 }
 				 else
 				 {
-					 System.out.print(" "+getSpace(0));
+					 System.out.print(" "+getSpace(1));
 				 }
 						
 					}
 		
 		   
 				 }
-			 //System.out.print("                                                                                     \n");
+			 System.out.print("                                                                                     \n");
 			 
 			 }
 			 
@@ -299,7 +299,7 @@ public void gameImplementation(Player[] players,ArrayList<Snake> snakes,ArrayLis
 				 }
 		   
 			 }
-			   //System.out.print("                                                                                                \n");
+			   System.out.print("                                                                                                \n");
 			 }
 			 
 		/*public void setSnake(int i,int j)
