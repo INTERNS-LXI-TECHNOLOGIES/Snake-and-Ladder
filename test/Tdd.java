@@ -6,6 +6,6 @@ public class Tdd
 	{
 		GameBoard gameBoard = new GameBoard();
 		
-		gameBoard.inputBoard();
+		gameBoard.startGame();
 	}
 }
