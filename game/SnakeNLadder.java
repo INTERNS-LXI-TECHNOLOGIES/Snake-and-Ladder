@@ -4,7 +4,7 @@ public class SnakeNLadder
 {
 private int noOfBox=100;
 private int winPoint=100;
-Snake snake=new Snake();
+//Snake snake=new Snake();
 //Ladder ladder=new Ladder();
 
 Scanner scan=new Scanner(System.in);
@@ -117,6 +117,7 @@ public String get2DigitNum(int k)
 public boolean isWin(int player)
 {
 	return winPoint==player;
+}
 }
 
 
