@@ -1,7 +1,14 @@
-package com.lxisoft.snakeandladder2;
+package com.lxisoft.snakeandladder3;
 public class Coin
 {
-	private String name;
+	private String symbol;
 	
-	
+	public void setSymbol(String symbol)
+	{
+		this.symbol=symbol;
+	}
+	public String getSymbol()
+	{
+		return symbol;
+	}
 }

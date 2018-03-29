@@ -1,18 +1,22 @@
-package com.lxisoft.snakeandladder2;
-import com.lxisoft.snakeandladder2.Dies;
-import com.lxisoft.snakeandladder2.Player;
-import com.lxisoft.snakeandladder2.Cells;
+package com.lxisoft.snakeandladder3;
+import com.lxisoft.snakeandladder3.Snake;
+import com.lxisoft.snakeandladder3.Ladder;
+import com.lxisoft.snakeandladder3.Cell;
+import java.util.ArrayList;
 public class Board
 {
 	private int cell=100;
+	Cell[][] cells=new Cell[10][10];
+	ArrayList<Snake> snakes=new ArrayList<Snake>();
+	ArrayList<Ladder> ladders=new ArrayList<Ladder>();
 	
-	Cells[][] cells=new Cells[10][10]; 	
-	public void setBoardCell(int cell)
+	public void setCell(int cell)
 	{
 		this.cell=cell;
 	}
-	public int getBoardCell()
+	public int getCell()
 	{
 		return cell;
 	}
+	
 }

@@ -1,5 +1,6 @@
-package com.lxisoft.snakeandladder2;
-public class Cells
+package com.lxisoft.snakeandladder3;
+
+public class Cell
 {
 	private int cellPosition;
 	

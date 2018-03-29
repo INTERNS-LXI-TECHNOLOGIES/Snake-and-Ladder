@@ -1,19 +1,23 @@
-package com.lxisoft.snakeandladder2;
-import com.lxisoft.snakeandladder2.Player;
+package com.lxisoft.snakeandladder3;
+import com.lxisoft.snakeandladder3.Player;
 public class Player
 {
-	
-	private String name;
-	private int position = 0;
+	private int position;
+	String name;
 	private boolean status=false;
-	private Coin coin=new Coin();
+	private Coin coin;
 	
-	public void setCoin(Coin coin) {
-		this.coin= coin;
+	public void setPosition(int position)
+	{
+		this.position=position;
 	}
-	public Player(int player){
-		this.name=name;
-		
+	public int getPosition()
+	{
+		return position;
+	}
+	public void setCoin(Coin coin)
+	{
+		this.coin=coin;
 	}
 	public Coin getCoin()
 	{
@@ -23,10 +27,9 @@ public class Player
 	{
 		this.name=name;
 	}
-	
 	public String getName()
 	{
-		return name;
+		return this.name;
 	}
 	public void setStatus(boolean status)
 	{
@@ -34,20 +37,6 @@ public class Player
 	}
 	public boolean getStatus()
 	{
-		return status;
+		return this.status;
 	}
-	
-	public void setPosition(int value) {
-		position = position+value;
-	}
-	public int getPosition()
-	{
-		return position;	
-	}
-	public void startGame()
-	{
-		
-	}
-	
-	
 }
